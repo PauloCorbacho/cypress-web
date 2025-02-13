@@ -1,15 +1,15 @@
-class LinkedInPage {
+class HomePageDemo {
 
     get emailInput() {
-      return '#username'; 
+      return '[data-test="username"]'; 
     }
   
     get passwordInput() {
-      return '#password';
+      return '[data-test="password"]';
     }
   
     get loginButton() {
-      return '.btn__primary--large'; 
+      return '[data-test="login-button"]'; 
     }
 
 
@@ -22,7 +22,7 @@ class LinkedInPage {
     }
   
     visit() {
-      cy.visit('https://www.linkedin.com'); 
+      cy.visit('https://www.saucedemo.com/'); 
     }
 
     clickSignIn() {
@@ -40,7 +40,21 @@ class LinkedInPage {
     clickLogin() {
       cy.get(this.loginButton).click(); 
     }
+
+    openCart(){
+        cy.get('.shopping_cart_link').click();
+    }
+
+    getValueFromCart(){
+        return cy.get('[data-test="inventory-item-price"]')
+    }
+
+    doingLogin(email, password){
+        this.fillEmail(email);
+        this.fillPassword(password);
+        this.clickLogin();
+    }
   }
   
-  export default LinkedInPage;
+  export default HomePageDemo;
   
